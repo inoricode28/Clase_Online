@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 /**
  * Formulario03
  */
-public class Formulario004 extends JFrame {
+public class Formulario004 extends JFrame { //formulario
 
     // Area Global
     private JLabel lblTitulo, lblPrimerNumero, lblSegundoNumero, lblResultadosuma ;
