@@ -2,13 +2,15 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 
-public class practica001 extends JFrame {
+public class Factura extends JFrame {
 
     private JLabel lblTitulo, lblError;
      
@@ -16,7 +18,7 @@ public class practica001 extends JFrame {
     private JButton btnCalcular , btnlimpiar;           
         
 
-    public practica001() {        
+    public Factura() {        
         
         getContentPane().setBackground(new Color(0x071AFE));
 
@@ -325,6 +327,20 @@ public class practica001 extends JFrame {
         lblError.setText("Error: Ingrese un numero valido");
     }
 }
+
+
+ public static void main(String[] args){
+    
+        Factura frm = new Factura();
+        frm.setBounds(0, 0, 1000, 1050);
+        frm.setVisible(true);
+        frm.setLocationRelativeTo(null);
+        frm.setResizable(false); 
+        
+        ImageIcon image = new ImageIcon("images/image.png");
+        frm.setIconImage(image.getImage());        
+
+    }
 
 }
 
