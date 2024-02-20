@@ -1,0 +1,6 @@
+npm (Node packet manager)
+npm init --> iniciar un paquete
+
+npm install mysql2
+mysql2 --libreria
+
