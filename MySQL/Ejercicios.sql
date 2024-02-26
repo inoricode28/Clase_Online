@@ -152,3 +152,70 @@ UPDATE users SET BIO ='MESTRO CONTRSUCTOR', USERNAME='JUAN' WHERE ID = 2;
  DELETE FROM users WHERE ID = 2;
 
  TRUNCATE TABLE users;
+
+
+ --INNER JOIN
+
+  --Fucionar tablas
+  -- INNER JOIN
+mysql> SELECT
+    -> *
+    -> FROM users
+    -> INNER JOIN comments ON users.id = comments.user_id;
+
+-- Seleccionar un usuario con una sola tabla
+ users.username, users.email FROM users INNER JOIN comments ON users.id = comments.user_id;
+
+ SELECT DISTINCT users.username, users.email FROM users INNER JOIN comments ON users.id = comments.user_id WHERE users.status = 'active' ;
+
+
+ SELECT * FROM users LEFT JOIN comments ON users.id = comments.user_id;
+
+ SELECT * FROM users LEFT JOIN comments ON users.id = comments.user_id WHERE comments.user_id IS NULL;
+
+ SELECT * FROM users INNER JOIN comments ON users.id = comments.user_id WHERE DATE(comments.created_at) = '2024-01-22' ;
+
+ SELECT
+        users.username,
+        users.email,
+        count(*) AS 'cantidad_comentarios'
+ FROM users
+ INNER JOIN  comments ON users.id = comments.user_id
+ WHERE DATE  (comments.created_at) = '2024-01-22'
+ GROUP BY users.username
+ ORDER BY cantidad_comentarios DESC
+ LIMIT 1;
+
+ SELECT 
+    username,
+    email
+ FROM(
+    SELECT
+    users.username,
+    users.email,
+    count(*) AS 'cantidad_comentarios'
+    FROM users
+    INNER JOIN  comments ON users.id = comments.user_id
+    WHERE DATE  (comments.created_at) = '2024-01-22'
+    GROUP BY users.username
+    ORDER BY cantidad_comentarios DESC
+    LIMIT 1
+ )AS resultado;
+
+
+SELECT 
+    username,
+    email
+FROM(
+    SELECT
+    users.username,
+    users.email,
+    count(*) AS 'cantidad_comentarios'
+    FROM users
+    INNER JOIN  comments ON users.id = comments.user_id
+    WHERE DATE  (comments.created_at) = '2024-01-22'
+    GROUP BY users.username
+    HAVING cantidad_comentarios >=2
+    ORDER BY cantidad_comentarios DESC
+)AS resultado;
+
